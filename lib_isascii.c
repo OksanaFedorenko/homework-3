@@ -1,17 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
-
-//res1 - custom function, res2 - standart function
-void compare(int res1, int res2)
-{
-    if (res1 != 0 && res2 != 0) {
-        printf("The character is an ascii character\n");
-    } else if (res1 == 0 && res2 == 0) {
-       printf("The character is not an ascii character\n"); 
-    } else {
-        printf("Your function is incorrect. Check your code.\n");
-    }
-}
+#include "./helpers/compare.c"
 
 int lib_isascii(int symbol)
 {
@@ -26,16 +15,15 @@ int lib_isascii(int symbol)
 int main()
 {
    char symbol1 = 'N';
-   //char symbol2 = 'à';
-   char a = '–';
+   int symbol2 = 150;
 
    int res1 = lib_isascii(symbol1);
    int res2 = isascii(symbol1);
 
-   int res3 = lib_isascii(a);
-   int res4 = isascii(a);
+   int res3 = lib_isascii(symbol2);
+   int res4 = isascii(symbol2);
    
-   compare(res1, res2);
-   compare(res3, res4);
+   compare(res1, res2, 4);
+   compare(res3, res4, 4);
 
 }

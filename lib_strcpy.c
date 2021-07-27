@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "./helpers/lib_strcmp.c"
 #include "./helpers/lib_strlen.c"
-
+#include "./helpers/allocate_memory.c"
 
 void lib_strcpy(char *dest, const char *source)
 {
@@ -21,8 +21,11 @@ int main()
     char *short_string = "Hello World";
     char *long_string = "TdFCjHQk0GaohxZNyLHWbqy4lyFfoKsfBAYkEwmjHDYIpi392B";
 
-    char *buffer = malloc(lib_strlen(long_string) * sizeof(char));
+     char len1 = lib_strlen(long_string);
+    //char *buffer = malloc(lib_strlen(long_string) * sizeof(char));
     char *buffer2 = malloc(lib_strlen(long_string) * sizeof(char));
+
+    char *buffer = allocate_memory(len1);
 
     lib_strcpy(buffer, long_string);
     strcpy(buffer2, long_string);
@@ -34,8 +37,6 @@ int main()
      } else {
       printf ("Strings are the same\n");
      }
-
-    free(buffer);
 
     return 0;  
 }

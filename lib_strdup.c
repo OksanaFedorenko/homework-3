@@ -17,6 +17,7 @@ char *lib_strdup(const char *str)
      dup[i] = '\0';
      return dup;
      free(dup);
+     dup = NULL;
    }
    
 
@@ -29,6 +30,7 @@ int main()
    
     char *buffer = lib_strdup(long_string);
     char *buffer2 = strdup(long_string);
+    
     printf("Function lib_strdup with a short string:%s\n", buffer);
     printf("Function strdup with a short string:%s\n", buffer2);
 

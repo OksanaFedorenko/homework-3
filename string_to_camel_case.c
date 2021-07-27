@@ -16,7 +16,8 @@ void string_to_camel_case(char *str)
 
 int main()
 {
-    char str[100] = "life is wonderful!";
+    //char str[100] = "life is wonderful!";
+    char str[100] = "DDDDDkjkljjjDDDDDhhhhhhhh!!!!!!!";
 
     string_to_camel_case(str);
 

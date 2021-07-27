@@ -23,7 +23,7 @@ int main()
 {
     char *str1 = "Hello world!";
     char *str2 = "Hello world!";
-    char *str3 = "Hello my friend!";
+    char *str3 = "Lorem ipsum dolor sit amet.";
 
     int res = lib_strcmp(str1, str2);
     int res2 = strcmp(str1, str2);
@@ -37,6 +37,5 @@ int main()
        printf("The strings are same.\n");
     else
        printf("The strings are different.\n");
-       
     return 0;
 }

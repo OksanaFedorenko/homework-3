@@ -1,17 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
-
-//res1 - custom function, res2 - standart function
-void compare(int res1, int res2)
-{
-    if (res1 > 0 && res2 > 0) {
-        printf("The character is a digit\n");
-    } else if (res1 == 0 && res2 == 0) {
-       printf("The character is not a digit\n"); 
-    } else {
-        printf("Your function is incorrect. Check your code.\n");
-    }
-}
+#include "./helpers/compare.c"
 
 int lib_isdigit(int symbol)
 {
@@ -33,8 +22,8 @@ int main()
    int res3 = lib_isdigit(symbol2);
    int res4 = isdigit(symbol2);
    
-   compare(res1, res2);
-   compare(res3, res4);
+   compare(res1, res2, 3);
+   compare(res3, res4, 3);
 
 }
 

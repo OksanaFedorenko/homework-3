@@ -1,17 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
-
-//res1 - custom function, res2 - standart function
-void compare(int res1, int res2)
-{
-    if (res1 != 0 && res2 != 0) {
-        printf("The character is an alphabetic character\n");
-    } else if (res1 == 0 && res2 == 0) {
-       printf("The character is not an alphabetic character\n"); 
-    } else {
-        printf("Your function is incorrect. Check your code.\n");
-    }
-}
+#include "./helpers/compare.c"
 
 int lib_isalpha(int symbol)
 {
@@ -36,7 +25,8 @@ int main()
    int res3 = lib_isalpha(symbol2);
    int res4 = isalpha(symbol2);
    
-   compare(res1, res2);
-   compare(res3, res4);
+   //(custom function, standart function, parameter)
+  compare(res1, res2, 1);
+  compare(res3, res4, 1);
 
 }
