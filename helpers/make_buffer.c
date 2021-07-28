@@ -1,7 +1,8 @@
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-char *lib_allocate_memory(int size)
+char *make_buffer(int size)
 {
   char *buffer = (char *)malloc(size * sizeof(char));
 
@@ -10,6 +11,4 @@ char *lib_allocate_memory(int size)
   } else {
       printf("Malloc didn't allocate memory buffer...\n");
   }
-  free(buffer);
-  buffer = NULL;
 }

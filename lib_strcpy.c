@@ -1,9 +1,11 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "./helpers/constants.c"
 #include "./helpers/lib_strcmp.c"
 #include "./helpers/lib_strlen.c"
-#include "./helpers/allocate_memory.c"
+#include "./helpers/make_buffer.c"
+#include "./helpers/compare_strings.c"
 
 void lib_strcpy(char *dest, const char *source)
 {
@@ -13,44 +15,38 @@ void lib_strcpy(char *dest, const char *source)
     {
         dest[i] = source[i];
     }
-    dest[i] = '\0';
+    dest[i+1] = '\0';
 }
 
 int main()
 {
-    char *short_string = "Hello World";
-    char *long_string = "TdFCjHQk0GaohxZNyLHWbqy4lyFfoKsfBAYkEwmjHDYIpi392B";
+    char *buffer1 = make_buffer((lib_strlen(short_string) + 1));
+    char *buffer2 = make_buffer((lib_strlen(short_string) + 1));
+    char *buffer3 = make_buffer((lib_strlen(long_string) + 1));
+    char *buffer4 = make_buffer((lib_strlen(long_string) + 1));
+    char *buffer5 = make_buffer((lib_strlen(very_long_string) + 1));
+    char *buffer6 = make_buffer((lib_strlen(very_long_string) + 1));
+ 
+    lib_strcpy(buffer1, short_string);
+    strcpy(buffer2, short_string);
 
-     char len1 = lib_strlen(long_string);
-    //char *buffer = malloc(lib_strlen(long_string) * sizeof(char));
-    char *buffer2 = malloc(lib_strlen(long_string) * sizeof(char));
+    lib_strcpy(buffer3, long_string);
+    strcpy(buffer4, long_string);
 
-    char *buffer = allocate_memory(len1);
+    lib_strcpy(buffer5, very_long_string);
+    strcpy(buffer6, very_long_string);
 
-    lib_strcpy(buffer, long_string);
-    strcpy(buffer2, long_string);
+    //compare custom function and library function
+    compare_strings(buffer1, buffer2);
+    compare_strings(buffer3, buffer4);
+    compare_strings(buffer5, buffer6);
 
-    int res = lib_strcmp(buffer, buffer2);
+    free(buffer1);
+    free(buffer2);
+    free(buffer3);
+    free(buffer4);
+    free(buffer5);
+    free(buffer6);
 
-    if (res) {
-      printf("Strings are not the same\n");
-     } else {
-      printf ("Strings are the same\n");
-     }
-
-    return 0;  
+    return 0;
 }
-
-/* Подключаем заголовочные файлы стандартной библиотеки языка СИ
-для ввода-вывода и работы со строками.
-
-Создаем функцию mystrcpy, передаем два параметра - первый указывает куда записать результат 
-(скопированную строку), второй - исходную строку. Поскольку параметр dest является указателем
-и в него при вызове функции записывается адрес переменной buffer в памяти, то функция имеет
-доступ к ячейке памяти, где хранится переменная buffer, и может записать в нее скопированную строку.
-Поскольку предполагается, что исходная строка не меняется, то указатель на исходную строку - константа.
-
-Цикл, проходясь по строке как по массиву символов, копирует строку пока не встретится
-ноль-символ (ноль-терминатор), который тоже надо скопировать.*/
-
-

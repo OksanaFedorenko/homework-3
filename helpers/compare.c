@@ -58,4 +58,6 @@ int compare(int res1, int res2, int param)
 2 - isprint
 3 - isdigit
 4 - isascii
+
+Эту функцию надо бы переделать, но у меня уже нет сил. Сдаю пока, как есть.
 */

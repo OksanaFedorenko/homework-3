@@ -1,23 +1,32 @@
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include "helpers/constants.c"
 #include "helpers/lib_strlen.c"
 #include "helpers/lib_toupper.c"
+#include "helpers/make_buffer.c"
 
-void string_to_upper(char *str)
+char *string_to_upper(char *str)
 {
-   for (int i = 0; i <= lib_strlen(str); i++)
+   char *res = make_buffer(lib_strlen(str) + 1);
+   int i;
+   for (i = 0; i <= lib_strlen(str); i++)
    {
-       str[i] = lib_toupper(str[i]);
+       res[i] = lib_toupper(str[i]);
    }
+   res[i] = '\0';
+   return res;
 }
 
 int main()
 {
-    char str[100] = "life is beautiful!";
+    char *result1 = string_to_upper(long_string);
+    char *result2 = string_to_upper(mixed_string);
+    char *result3 = string_to_upper(camel_string);
 
-    string_to_upper(str);
-
-    printf("%s\n", str);
+    printf("%s\n", result1);
+    printf("%s\n", result2);
+    printf("%s\n", result3);
 
     return 0;
 }
